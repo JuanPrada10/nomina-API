@@ -27,10 +27,7 @@ public class FormNominaResource {
                              </nav>
           <div class="container container-fluid w-25 mt-5">
             
-            <form method="post" action="/api/formulario">
-              <label class="form-label" for="id_empleado">ID del empleado:</label>
-              <input class="form-control" type="number" id="id_empleado" name="id_empleado" required>
-        
+            <form method="post" action="/api/nomina/formulario">
               <label class="form-label" for="nombre_empleado">Nombre completo:</label>
               <input class="form-control" type="text" id="nombre_empleado" name="nombre_empleado" required>
         

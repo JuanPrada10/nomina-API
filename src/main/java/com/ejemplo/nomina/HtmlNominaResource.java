@@ -32,24 +32,34 @@ public class HtmlNominaResource {
               </nav>
                     <div class="container-xl mt-5 ">
                     <table class=" table table-dark table-striped table-hover table-bordered">
-                                    <tr><th >ID</th><th>Nombre</th><th>Salario</th><th>Días Trabajados</th><th>Total a Pagar</th></tr>
+                                    <tr><th >ID</th><th>Nombre</th><th>Salario</th><th>Días Trabajados</th><th>Total a Pagar</th><th>Opciones</th></tr>
                     """);
-                            for (Nomina n : nominas) {
-                                double totalPagar = (n.getSalario() / 30) * n.getDias_trabajados();
-                                html.append("<tr class='table-dark'>")
-                                        .append("<td class='table-dark'>").append(n.getId_empleado()).append("</td>")
-                                        .append("<td class='table-dark'>").append(n.getNombre_empleado()).append("</td>")
-                                        .append("<td class='table-dark'>$").append(n.getSalario()).append("</td>")
-                                        .append("<td class='table-dark'>").append(n.getDias_trabajados()).append("</td>")
-                                        .append("<td class='table-dark'>$").append(String.format("%.2f", totalPagar)).append("</td>")
-                                        .append("</tr>");
-                            }
-                    
-                            html.append("""
-                      </table>
-                                        <a href="formulario">
-                                             <button class="btn btn-success bg-gradient"> Añadir empleado</button>
-                                           </a>
+        for (Nomina n : nominas) {
+    double totalPagar = (n.getSalario() / 30) * n.getDias_trabajados();
+    html.append("<tr class='table-dark'>")
+        .append("<td class='table-dark'>").append(n.getId_empleado()).append("</td>")
+        .append("<td class='table-dark'>").append(n.getNombre_empleado()).append("</td>")
+        .append("<td class='table-dark'>$").append(n.getSalario()).append("</td>")
+        .append("<td class='table-dark'>").append(n.getDias_trabajados()).append("</td>")
+        .append("<td class='table-dark'>$").append(String.format("%.2f", totalPagar)).append("</td>")
+        .append("<td class='table-dark'>")
+        .append("<a href='/api/nomina/eliminar/")
+        .append(n.getId_empleado())
+        .append("' class='btn btn-danger btn-sm'>Eliminar</a>")
+         .append("<a href='/api/formulario-actualizar/")
+         .append(n.getId_empleado())
+        .append("' class='btn btn-primary btn-sm ms-1'>Actualizar</a>")
+        .append("</td>")
+        .append("</tr>");
+}
+
+
+        html.append("""
+                    </table>
+                    <a href="formulario">
+                        <button class="btn btn-success bg-gradient"> Añadir </button>
+                    </a>
+                                       
                     </div>
               
    

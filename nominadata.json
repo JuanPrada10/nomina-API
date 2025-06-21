@@ -1,7 +1,7 @@
 [ {
   "id_empleado" : 1,
   "nombre_empleado" : "Ana Torres",
-  "salario" : 2500.0,
+  "salario" : 200000.0,
   "dias_trabajados" : 20
 }, {
   "id_empleado" : 2,
@@ -26,11 +26,6 @@
 }, {
   "id_empleado" : 6,
   "nombre_empleado" : "juan",
-  "salario" : 1.23123123E8,
+  "salario" : 1.289E7,
   "dias_trabajados" : 7
-}, {
-  "id_empleado" : 7,
-  "nombre_empleado" : "cristian",
-  "salario" : 20000.0,
-  "dias_trabajados" : 12
 } ]
