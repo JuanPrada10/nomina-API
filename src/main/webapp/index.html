@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Instrucciones API REST - Nómina</title>
+</head>
+<body>
+	<h1>API REST - Gestión de Nómina</h1>
+	<p>Esta aplicación permite gestionar información de empleados
+		usando servicios REST.</p>
+
+	<h2>Base URL</h2>
+	<p>
+		<code>http://localhost:8080/NominaAPI/api/nomina</code>
+	</p>
+
+	<h2>Servicios disponibles</h2>
+
+	<h3>1. Obtener todas las nóminas</h3>
+	<pre>
+GET /api/nomina
+Content-Type: application/json
+    </pre>
+
+	<h3>2. Obtener nómina por ID</h3>
+	<pre>
+GET /api/nomina/{id}
+Content-Type: application/json
+    </pre>
+
+	<h3>3. Crear una nueva nómina</h3>
+	<pre>
+POST /api/nomina
+Content-Type: application/json
+
+Body:
+{
+  "id_empleado": 1,
+  "nombre_empleado": "Juan Pérez",
+  "salario": 2500.0,
+  "dias_trabajados": 30
+}
+    </pre>
+
+	<h3>4. Actualizar una nómina</h3>
+	<pre>
+PUT /api/nomina/{id}
+Content-Type: application/json
+
+Body:
+{
+  "id_empleado": 1,
+  "nombre_empleado": "Juan Pérez",
+  "salario": 2800.0,
+  "dias_trabajados": 28
+}
+    </pre>
+
+	<h3>5. Eliminar una nómina</h3>
+	<pre>
+DELETE /api/nomina/{id}
+    </pre>
+
+	<h2>Formato de respuesta</h2>
+	<p>
+		Las respuestas están en formato <strong>JSON</strong>.
+	</p>
+</body>
+</html>

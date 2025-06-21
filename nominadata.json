@@ -1,0 +1,36 @@
+[ {
+  "id_empleado" : 1,
+  "nombre_empleado" : "Ana Torres",
+  "salario" : 2500.0,
+  "dias_trabajados" : 20
+}, {
+  "id_empleado" : 2,
+  "nombre_empleado" : "Carlos Mendoza",
+  "salario" : 3000.0,
+  "dias_trabajados" : 22
+}, {
+  "id_empleado" : 3,
+  "nombre_empleado" : "Luisa Martínez",
+  "salario" : 2800.0,
+  "dias_trabajados" : 18
+}, {
+  "id_empleado" : 4,
+  "nombre_empleado" : "Jorge Salinas",
+  "salario" : 3200.0,
+  "dias_trabajados" : 25
+}, {
+  "id_empleado" : 5,
+  "nombre_empleado" : "Mónica Ríos",
+  "salario" : 2600.0,
+  "dias_trabajados" : 21
+}, {
+  "id_empleado" : 6,
+  "nombre_empleado" : "juan",
+  "salario" : 1.23123123E8,
+  "dias_trabajados" : 7
+}, {
+  "id_empleado" : 7,
+  "nombre_empleado" : "cristian",
+  "salario" : 20000.0,
+  "dias_trabajados" : 12
+} ]
