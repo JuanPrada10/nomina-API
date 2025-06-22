@@ -1,31 +1,61 @@
 [ {
   "id_empleado" : 1,
   "nombre_empleado" : "Ana Torres",
-  "salario" : 200000.0,
-  "dias_trabajados" : 20
-}, {
-  "id_empleado" : 2,
-  "nombre_empleado" : "Carlos Mendoza",
-  "salario" : 3000.0,
-  "dias_trabajados" : 22
+  "salario" : 2000000.0,
+  "dias_trabajados" : 31
 }, {
   "id_empleado" : 3,
   "nombre_empleado" : "Luisa Martínez",
-  "salario" : 2800.0,
+  "salario" : 2450000.0,
   "dias_trabajados" : 18
 }, {
   "id_empleado" : 4,
   "nombre_empleado" : "Jorge Salinas",
-  "salario" : 3200.0,
+  "salario" : 1850000.0,
   "dias_trabajados" : 25
 }, {
   "id_empleado" : 5,
   "nombre_empleado" : "Mónica Ríos",
-  "salario" : 2600.0,
+  "salario" : 3500000.0,
   "dias_trabajados" : 21
 }, {
-  "id_empleado" : 6,
-  "nombre_empleado" : "juan",
-  "salario" : 1.289E7,
-  "dias_trabajados" : 7
+  "id_empleado" : 8,
+  "nombre_empleado" : "Carlos Sánchez López",
+  "salario" : 3120000.0,
+  "dias_trabajados" : 28
+}, {
+  "id_empleado" : 9,
+  "nombre_empleado" : "Javier Pérez González",
+  "salario" : 4300000.0,
+  "dias_trabajados" : 30
+}, {
+  "id_empleado" : 10,
+  "nombre_empleado" : "Laura Díaz Ramírez",
+  "salario" : 2780000.0,
+  "dias_trabajados" : 26
+}, {
+  "id_empleado" : 11,
+  "nombre_empleado" : "Pedro Gómez Hernández",
+  "salario" : 3500000.0,
+  "dias_trabajados" : 29
+}, {
+  "id_empleado" : 12,
+  "nombre_empleado" : "Sofía Ruiz Martín",
+  "salario" : 2150000.0,
+  "dias_trabajados" : 24
+}, {
+  "id_empleado" : 13,
+  "nombre_empleado" : "Diego Jiménez Navarro",
+  "salario" : 3950000.0,
+  "dias_trabajados" : 27
+}, {
+  "id_empleado" : 14,
+  "nombre_empleado" : "Elena Castro Ortega",
+  "salario" : 2600000.0,
+  "dias_trabajados" : 23
+}, {
+  "id_empleado" : 15,
+  "nombre_empleado" : "Miguel Ángel Reyes Molina",
+  "salario" : 4200000.0,
+  "dias_trabajados" : 31
 } ]

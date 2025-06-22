@@ -108,11 +108,12 @@
     <div class="server-select">
       <label for="server">Servidor:</label>
       <select id="server">
-        <option>http://localhost:8080/api/nomina</option>
-        <option>http://localhost:8080/api/htmlnomina</option>
-        <option>http://localhost:8080/api/formulario</option>
-        <option>http://localhost:8080/api/formulario-actualizar/1</option>
-        <option>http://localhost:8080/api/nomina/1</option>
+        <option>http://localhost:9090/api/nomina</option>
+        <option>http://localhost:9090/api/htmlnomina</option>
+        <option>http://localhost:9090/api/formulario</option>
+        <option>http://localhost:9090/api/formulario-actualizar/1</option>
+        <!-- <option>http://localhost:9090/api/nomina/formulario-actualizar/1</option> -->
+        <option>http://localhost:9090/api/nomina/1</option>
       </select>
       <button 
         onclick="window.open(document.getElementById('server').value, '_blank');"
@@ -129,28 +130,20 @@
           <div class="desc">Obtener todas las nóminas</div>
           <div class="extra-info" style="display:none;">
             <strong>Descripción:</strong> Devuelve un listado de todas las nóminas registradas.<br>
-            <strong>Respuesta:</strong> Un JSON con array de nóminas.
+            <strong>Respuesta:</strong> 200, Devuele un JSON con array de nóminas.
           </div>
         </div>
         <span class="arrow">&#9660;</span>
       </div>
       <div class="endpoint" onclick="toggleInfo(this)">
-        <div class="method POST">POST</div>
+        <div class="method GET">GET</div>
         <div class="endpoint-info">
           <span class="path">/formulario</span>
           <div class="desc">Crear una nueva nómina</div>
           <div class="extra-info" style="display:none;">
             <strong>Descripción:</strong> Crea una nómina nueva.<br>
-            <strong>Body:</strong> JSON con los datos de la nómina ejemplo:<br>
-			<p>
-				{
-				"id_empleado": 1,
-				"nombre_empleado": "Juan Pérez",
-				"salario": 2500.0,
-				"dias_trabajados": 30
-				}
-			</p>
-            <strong>Respuesta:</strong> 201 Created, objeto nómina creada.
+            <strong>Body:</strong> Devuelve un HTML con los datos de la nómina ejemplo:<br>
+            <strong>Respuesta:</strong> Devuelve un String de objeto nómina creada.
           </div>
         </div>
         <span class="arrow">&#9660;</span>
@@ -161,20 +154,28 @@
           <span class="path">/nomina/{id}</span>
           <div class="desc">Obtener nómina por ID</div>
           <div class="extra-info" style="display:none;">
-            <strong>Descripción:</strong> Devuelve la nómina correspondiente al ID.<br>
-            <strong>Respuesta:</strong> 200 OK, objeto nómina.
+            <strong>Descripción:</strong> Devuelve la nómina correspondiente al ID del JSON.<br>
+                <p>
+                    {
+                    "id_empleado": 1,
+                    "nombre_empleado": "Juan Pérez",
+                    "salario": 2500.0,
+                    "dias_trabajados": 30
+                    }
+                </p>
+            <strong>Respuesta:</strong> 200 OK, ID JSON nómina.
           </div>
         </div>
         <span class="arrow">&#9660;</span>
       </div>
       <div class="endpoint" onclick="toggleInfo(this)">
-        <div class="method PUT">PUT</div>
+        <div class="method GET">GET</div>
         <div class="endpoint-info">
           <span class="path">/formulario-actualizar/{id}</span>
           <div class="desc">Actualizar una nómina</div>
           <div class="extra-info" style="display:none;">
             <strong>Descripción:</strong> Actualiza los datos de una nómina existente.<br>
-            <strong>Body:</strong> JSON con los nuevos datos.<br>
+            <strong>Body:</strong> Un HTML con los nuevos datos.<br>
 			<p>
 				{
 				"id_empleado": 1,
@@ -183,7 +184,62 @@
 				"dias_trabajados": 30
 				}
 			</p>
-            <strong>Respuesta:</strong> 200 OK, objeto nómina actualizada.
+            <strong>Respuesta:</strong> Devuevle un String de objeto nómina actualizada.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method POST">POST</div>
+        <div class="endpoint-info">
+          <span class="path">/nomina</span>
+          <div class="desc"> Crea una nueva nomina</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Crea una nueva nomina en el JSON<br>
+            <strong>Body:</strong><br>
+            <p>
+                {
+                "id_empleado": 1,
+                "nombre_empleado": "Juan Pérez",
+                "salario": 2500.0,
+                "dias_trabajados": 30
+                }
+            </p>
+            <strong>Respuesta:</strong> 201 OK. Devuelve un JSON
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method PUT">PUT</div>
+        <div class="endpoint-info">
+          <span class="path">/nomina/{id}</span>
+          <div class="desc">Actualiza nomina</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Actualiza una nomina ya existente en el JSON a traves de su ID.<br>
+            <strong>Body:</strong><br>
+            <p>
+                {
+                "id_empleado": 1,
+                "nombre_empleado": "Juan Pérez",
+                "salario": 2500.0,
+                "dias_trabajados": 15
+                }
+            </p>
+            <strong>Respuesta:</strong> 200 OK. Devuelve un JSON.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method GET">GET</div>
+        <div class="endpoint-info">
+          <span class="path">/htmlnomina</span>
+          <div class="desc">Vista de la tabla nomina</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong><br>
+            <strong>Body:</strong> Devuelve un HTML con los datos de la nómina<br>
+            <strong>Respuesta:</strong> Devuelve un string con los datos que contiene la tabla nomina.
           </div>
         </div>
         <span class="arrow">&#9660;</span>
@@ -194,7 +250,7 @@
           <span class="path">/nomina/{id}</span>
           <div class="desc">Eliminar una nómina</div>
           <div class="extra-info" style="display:none;">
-            <strong>Descripción:</strong> Elimina la nómina con el ID indicado.<br>
+            <strong>Descripción:</strong> Elimina la nómina con el ID indicado del JSON.<br>
             <strong>Respuesta:</strong> 204 No Content.
           </div>
         </div>
