@@ -48,10 +48,10 @@ public class FormularioActualizar {
               <input class="form-control" type="text" id="nombre_empleado" name="nombre_empleado" value="%s" required>
 
               <label class="form-label" for="salario">Salario:</label>
-              <input class="form-control" type="number" step="1" id="salario" name="salario" value="%s" required>
+              <input class="form-control" type="number" step="1" id="salario" name="salario" value="%s" required min="500000" max="10000000">
 
               <label class="form-label" for="dias_trabajados">Días trabajados:</label>
-              <input class="form-control" type="number" id="dias_trabajados" name="dias_trabajados" value="%d" required>
+              <input class="form-control" type="number" id="dias_trabajados" name="dias_trabajados" value="%d" required min="1" max="31">
 
               <input type="submit" class="btn btn-primary mt-3" value="Actualizar">
             </form>

@@ -1,69 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Instrucciones API REST - Nómina</title>
+  <meta charset="UTF-8">
+  <title>API Nómina - instrucciones</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0 0 40px 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 32px 32px 24px 32px;
+    }
+    h1 {
+      margin-top: 0;
+      color: #32329f;
+    }
+    .server-select {
+      margin-bottom: 24px;
+    }
+    label {
+      font-weight: bold;
+    }
+    select {
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-left: 8px;
+    }
+    .endpoint-list {
+      margin-top: 24px;
+    }
+    .endpoint {
+      display: flex;
+      align-items: stretch; /* Cambia de center a stretch */
+      margin-bottom: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px #0000004f;
+      cursor: pointer;
+      background: #fff;
+    }
+    .method {
+      width: 90px;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      padding: 0; /* Quita el padding vertical */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 1.1em;
+      /* El color de fondo se mantiene por clase GET, POST, etc. */
+      border: none;
+      border-right: 1px solid #eee;
+    }
+    .GET    { background: #61affe; }
+    .POST   { background: #49cc90; }
+    .PUT    { background: #fca130; }
+    .PATCH  { background: #50e3c2; }
+    .DELETE { background: #f93e3e; }
+    .OPTIONS{ background: #ebebeb; color: #333; }
+    .HEAD   { background: #9012fe; }
+    .endpoint-info {
+      flex: 1;
+      padding: 10px 16px;
+      background: #fff;
+      border-left: 1px solid #eee;
+    }
+    .path {
+      font-family: monospace;
+      font-size: 1.05em;
+      color: #32329f;
+    }
+    .desc {
+      color: #444;
+      font-size: 0.97em;
+      margin-top: 2px;
+    }
+    .arrow {
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      color: #888;
+      user-select: none;
+      transition: transform 0.5s;
+    }
+    .endpoint.open .arrow {
+      transform: rotate(180deg);
+    }
+  </style>
 </head>
 <body>
-	<h1>API REST - Gestión de Nómina</h1>
-	<p>Esta aplicación permite gestionar información de empleados
-		usando servicios REST.</p>
-
-	<h2>Base URL</h2>
-	<p>
-		<code>http://localhost:8080/NominaAPI/api/nomina</code>
-	</p>
-
-	<h2>Servicios disponibles</h2>
-
-	<h3>1. Obtener todas las nóminas</h3>
-	<pre>
-GET /api/nomina
-Content-Type: application/json
-    </pre>
-
-	<h3>2. Obtener nómina por ID</h3>
-	<pre>
-GET /api/nomina/{id}
-Content-Type: application/json
-    </pre>
-
-	<h3>3. Crear una nueva nómina</h3>
-	<pre>
-POST /api/nomina
-Content-Type: application/json
-
-Body:
-{
-  "id_empleado": 1,
-  "nombre_empleado": "Juan Pérez",
-  "salario": 2500.0,
-  "dias_trabajados": 30
+  <div class="container">
+    <h1>API Nómina</h1>
+	<p>Esta es una API REST para gestionar nóminas. Puedes realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre las nóminas.</p>
+	<p>Para interactuar con la API, selecciona un servidor y utiliza los siguientes endpoints:</p>
+    <div class="server-select">
+      <label for="server">Servidor:</label>
+      <select id="server">
+        <option>http://localhost:8080/api/nomina</option>
+        <option>http://localhost:8080/api/htmlnomina</option>
+        <option>http://localhost:8080/api/formulario</option>
+        <option>http://localhost:8080/api/formulario-actualizar/1</option>
+        <option>http://localhost:8080/api/nomina/1</option>
+      </select>
+      <button 
+        onclick="window.open(document.getElementById('server').value, '_blank');"
+        style="margin-left: 8px; padding: 4px 14px; border-radius: 4px; border: 1px solid #ccc; background: #61affe; color: #fff;">
+        ir
+      </button>
+    </div>
+	<h2>Los métodos disponibles son:</h2>
+    <div class="endpoint-list">
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method GET">GET</div>
+        <div class="endpoint-info">
+          <span class="path">/nomina</span>
+          <div class="desc">Obtener todas las nóminas</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Devuelve un listado de todas las nóminas registradas.<br>
+            <strong>Respuesta:</strong> Un JSON con array de nóminas.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method POST">POST</div>
+        <div class="endpoint-info">
+          <span class="path">/formulario</span>
+          <div class="desc">Crear una nueva nómina</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Crea una nómina nueva.<br>
+            <strong>Body:</strong> JSON con los datos de la nómina ejemplo:<br>
+			<p>
+				{
+				"id_empleado": 1,
+				"nombre_empleado": "Juan Pérez",
+				"salario": 2500.0,
+				"dias_trabajados": 30
+				}
+			</p>
+            <strong>Respuesta:</strong> 201 Created, objeto nómina creada.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method GET">GET</div>
+        <div class="endpoint-info">
+          <span class="path">/nomina/{id}</span>
+          <div class="desc">Obtener nómina por ID</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Devuelve la nómina correspondiente al ID.<br>
+            <strong>Respuesta:</strong> 200 OK, objeto nómina.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method PUT">PUT</div>
+        <div class="endpoint-info">
+          <span class="path">/formulario-actualizar/{id}</span>
+          <div class="desc">Actualizar una nómina</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Actualiza los datos de una nómina existente.<br>
+            <strong>Body:</strong> JSON con los nuevos datos.<br>
+			<p>
+				{
+				"id_empleado": 1,
+				"nombre_empleado": "Juan Pérez",
+				"salario": 2500.0,
+				"dias_trabajados": 30
+				}
+			</p>
+            <strong>Respuesta:</strong> 200 OK, objeto nómina actualizada.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="endpoint" onclick="toggleInfo(this)">
+        <div class="method DELETE">DELETE</div>
+        <div class="endpoint-info">
+          <span class="path">/nomina/{id}</span>
+          <div class="desc">Eliminar una nómina</div>
+          <div class="extra-info" style="display:none;">
+            <strong>Descripción:</strong> Elimina la nómina con el ID indicado.<br>
+            <strong>Respuesta:</strong> 204 No Content.
+          </div>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+    </div>
+  </div>
+  <script>
+function toggleInfo(element) {
+  const info = element.querySelector('.extra-info');
+  const arrow = element.querySelector('.arrow');
+  if (info.style.display === "none" || info.style.display === "") {
+    info.style.display = "block";
+    element.classList.add('open');
+  } else {
+    info.style.display = "none";
+    element.classList.remove('open');
+  }
 }
-    </pre>
-
-	<h3>4. Actualizar una nómina</h3>
-	<pre>
-PUT /api/nomina/{id}
-Content-Type: application/json
-
-Body:
-{
-  "id_empleado": 1,
-  "nombre_empleado": "Juan Pérez",
-  "salario": 2800.0,
-  "dias_trabajados": 28
-}
-    </pre>
-
-	<h3>5. Eliminar una nómina</h3>
-	<pre>
-DELETE /api/nomina/{id}
-    </pre>
-
-	<h2>Formato de respuesta</h2>
-	<p>
-		Las respuestas están en formato <strong>JSON</strong>.
-	</p>
+</script>
 </body>
+<footer style="text-align: center; padding: 16px; background: #f4f6fa; color: #666; font-size: 0.9em;">
+  <p>API Nómina - Documentación</p>
+  <p>© 2025 - Juan Prada & Cristian Romero</p>
+  <p>Programacion por componentes</p>
+</footer>
 </html>
