@@ -57,7 +57,6 @@ public class HtmlNominaResource {
                     <th>Días Trabajados</th>
                     <th>Salario diario</th>
                     <th>Total a Pagar</th>
-                    <th>Opciones</th>
                   </tr>
             """);
         
@@ -74,22 +73,11 @@ public class HtmlNominaResource {
                 .append("<td class='table-dark'>").append(n.getDias_trabajados()).append("</td>")
                 .append("<td class='table-dark currency'>$").append(formatoColombiano(pagoDiario)).append("</td>")
                 .append("<td class='table-dark currency'>$").append(formatoColombiano(totalPagar)).append("</td>")
-                .append("<td class='table-dark'>")
-                .append("<a href='/api/nomina/eliminar/")
-                .append(n.getId_empleado())
-                .append("' class='btn btn-danger btn-sm'>Eliminar</a>")
-                .append("<a href='/api/formulario-actualizar/")
-                .append(n.getId_empleado())
-                .append("' class='btn btn-primary btn-sm ms-1'>Actualizar</a>")
-                .append("</td>")
                 .append("</tr>");         
         }
 
         html.append("""
                 </table>
-                <a href="formulario">
-                  <button class="btn btn-success bg-gradient"> Añadir </button>
-                </a>
               </div>
             </body>
             </html>
